@@ -8,8 +8,8 @@ init
 	vars.sceneIdCurrent = 0;
 	vars.sceneIdAddr = IntPtr.Zero;
 
-	vars.sceneIdTarget = new SigScanTarget(0x0,
-	"06 00 00 00 00 30 25 ED FF 02 00 00 20 00 1C 00 28 02 55 0E 0E 55 55 55 11 0E 55 55 55 55 60 01 28 02 55 55 55 55 55 55 20 00 20 00 55 55 55 55 55 55 1C 00 1C 00 55 55 55 55 55 55 39 E3 21 D5"
+	vars.sceneIdTarget = new SigScanTarget(-0x0,
+	"?? 00 00 00 00 ?? ?? ?? ?? ?? 00 00 ?? 00 1C 00 ?? 02 55 ?? 0E 55 55 55 ?? 0E 55 55 55 55 ?? ?? ?? 02 55 55 55 55 55 55 ?? 00 ?? 00 55 55 55 55 55 55 1C 00 1C 00 55 55 55 55 55 55 ?? ?? ?? ?? 55 55 55 55 55 55 ?? ?? ?? ?? 55 55 55 55 55 55 ?? ?? ?? ?? 55 55 55 55 55 55 ?? ?? ?? ?? 55 55"
 	);
 }
 
@@ -27,14 +27,13 @@ update
 		
 
 
-			if (vars.sceneIdAddr != IntPtr.Zero && !((int)vars.sceneIdAddr < 0x02000000 || (int)vars.sceneIdAddr > 0x02F00000)) {
+			if (vars.sceneIdAddr != IntPtr.Zero) {
 				print("sceneIdAddr:" + vars.sceneIdAddr.ToString("X8"));
 
 				break;
 			}
 		}
  	}
-
 
 	vars.sceneIdOld = vars.sceneIdCurrent;
 	vars.sceneIdCurrent = memory.ReadValue<int>((IntPtr)vars.sceneIdAddr);
@@ -54,4 +53,6 @@ split
 {
 	return vars.sceneIdCurrent == 7 && vars.sceneIdOld == 3;
 }
+
+
 
