@@ -1,8 +1,4 @@
-state("snes9x")
-{
-	uint someValue : "snes9x.exe", 0x303818;
-
-}
+state("snes9x"){}
 
 init 
 {
@@ -27,7 +23,6 @@ init
 	);
 
 	vars.someValueCurrent = 0;
-
 }
 
 update
